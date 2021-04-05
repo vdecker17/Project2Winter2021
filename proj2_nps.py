@@ -190,7 +190,10 @@ def get_nearby_places(site_object):
 if __name__ == "__main__":
     state_dict = build_state_url_dict()
     print()
+    selection = None
     while True:
+        if selection == 'exit':
+                break
         state = input('Enter a state name (e.g. Michigan, michigan) or "exit": ').lower()
         if state == 'exit':
             break
@@ -206,13 +209,15 @@ if __name__ == "__main__":
             for site in sites:
                 print(f'[{count}] {site.info()}')
                 count += 1
-        selection = input('Choose a number from the list for details or "back" or "exit": ')
-        if selection == 'exit':
-            break
-        if int(selection) < count-1:
-            site = sites[int(selection)-1]
-            get_nearby_places(site)
-        if int(selection) > count-1:
-            print("go back")
-        if selection == 'back':
-            continue
+        while True:
+            selection = input('Choose a number from the list for details or "back" or "exit": ')
+            if selection == 'back':
+                break
+            if selection == 'exit':
+                break
+            if int(selection) < count-1:
+                site = sites[int(selection)-1]
+                get_nearby_places(site)
+            if int(selection) > count-1:
+                print("Please enter a valid number")
+                continue
