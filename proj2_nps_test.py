@@ -3,7 +3,6 @@ import proj2_nps as nps
 
 # SI 507 Fall 2020
 # Project 2
-# Test comment
 
 class Test_Part1(unittest.TestCase):
     def setUp(self):
